@@ -14,39 +14,60 @@ window.onload = function() {
 
 document.onkeyup = function(event) {
 	var addKey = event.key;
-	guessedLetters.push(addKey);
+	
+
 	console.log(secretLetters[0]);
 
-if ((addKey === secretLetters[0]) && (guessesLeft > 0)) {
-	win++;
-	guessesLeft = 9;
-	guessedLetters.length = 0;
-	secretLetters.length = 0;
-	var secretLetter = alphabet[Math.floor(Math.random() * alphabet.length)];
-	secretLetters.push(secretLetter);
-	console.log(secretLetters[0]);
-}
+	if (guessedLetters.indexOf(addKey)>-1){
+		alert("You've already guessed that key!");
+		return;
+	}
+	if (event.keyCode >= 65 && event.keyCode <= 90){
+		
+		
 
-else if ((addKey !== secretLetters[0]) && (guessesLeft > 0)) {
-	guessesLeft--
-}
+		guessedLetters.push(addKey);
 
-else {
-	loss++;
-	guessesLeft = 9;
-	guessedLetters.length = 0;
-	secretLetters.length = 0;
-	var secretLetter = alphabet[Math.floor(Math.random() * alphabet.length)];
-	secretLetters.push(secretLetter);
-	console.log(secretLetters[0]);
-}
+		if ((addKey === secretLetters[0]) && (guessesLeft > 0)) {
+			win++;
+			guessesLeft = 9;
+			guessedLetters.length = 0;
+			secretLetters.length = 0;
+			var secretLetter = alphabet[Math.floor(Math.random() * alphabet.length)];
+			secretLetters.push(secretLetter);
+			console.log(secretLetters[0]);
+		}
 
-var script = "<p>Guess what letter I'm thinking of</p>" +
-          "<p>Wins: " + win + "</p>" +
-          "<p>Losses: " + loss + "</p>" +
-          "<p>You have " + guessesLeft + " guesses left</p>" +
-          "<p>You've guessed " + guessedLetters + "</p>";
- 
-document.querySelector("#mainText").innerHTML = script;
+		else if ((addKey !== secretLetters[0]) && (guessesLeft > 0)) {
+			guessesLeft--
+		}
+
+		else {
+			loss++;
+			guessesLeft = 9;
+			guessedLetters.length = 0;
+			secretLetters.length = 0;
+			var secretLetter = alphabet[Math.floor(Math.random() * alphabet.length)];
+			secretLetters.push(secretLetter);
+			console.log(secretLetters[0]);
+		}
+
+		var script = "<p>Guess what letter I'm thinking of</p>" +
+				"<br>" + 
+				"<p>Wins: " + win + "</p>" + "<br>" + 
+				"<p>Losses: " + loss + "</p>" + "<br>" + 
+				"<p>You have " + guessesLeft + " guesses left</p>" + "<br>" +
+				"<p>You've guessed " + guessedLetters + "</p>";
+		
+		document.querySelector("#mainText").innerHTML = script;
 
 }
+else{
+	alert("Please press a letter");
+	return;
+}
+	}
+
+
+
+	
