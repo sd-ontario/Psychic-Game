@@ -52,7 +52,7 @@ document.onkeyup = function(event) {
 			console.log(secretLetters[0]);
 		}
 
-		var script = "<p>Guess what letter I'm thinking of</p>" +
+		var script = "<p>Guess what letter I'm thinking of!</p>" +
 				"<br>" + 
 				"<p>Wins: " + win + "</p>" + "<br>" + 
 				"<p>Losses: " + loss + "</p>" + "<br>" + 
